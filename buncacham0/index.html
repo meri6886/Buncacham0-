@@ -106,14 +106,19 @@
 
     .reviews{background:#fffaf2}
     .review-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:34px}
-    .review{flex:0 0 calc(33.333% - 12px);background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
-    .review img{height:210px;object-fit:cover}
-    .review-body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1}
-    .stars{color:var(--gold);letter-spacing:.08em}
-    .review p{line-height:1.75;color:#62564f;font-size:.92rem;flex:1}
-    .review.no-photo p{font-size:1.02rem;line-height:1.85}
-    .review .who{display:block}
-    .review small{display:block;color:var(--muted);margin-top:3px;font-size:.78rem}
+    .review{flex:0 0 calc(33.333% - 12px);background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 10px 28px rgba(82,55,41,.06)}
+    .review-photo{width:calc(100% + 52px);max-width:none;margin:-26px -26px 20px;aspect-ratio:4/3;object-fit:cover;cursor:zoom-in;transition:filter .2s}
+    .review-photo:hover{filter:brightness(.92)}
+    .lightbox{position:fixed;inset:0;background:rgba(20,12,10,.88);z-index:1000;display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+    .lightbox.show{display:flex}
+    .lightbox img{width:auto;max-width:100%;max-height:100%;object-fit:contain;border-radius:12px}
+    .lightbox-x{position:absolute;right:18px;top:14px;color:#fff;font-size:2rem;line-height:1}
+    .review-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .avatar{width:46px;height:46px;border-radius:50%;background:var(--burgundy);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:1.2rem;flex:none}
+    .review .who{display:block;font-size:.95rem}
+    .review small{display:block;color:var(--muted);margin-top:2px;font-size:.78rem}
+    .stars{color:var(--gold);letter-spacing:.08em;margin-bottom:8px}
+    .review p{line-height:1.75;color:#62564f;font-size:.93rem;margin:0}
 
     .visit{background:#fff}
     .visit-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px}
@@ -306,8 +311,8 @@
         </div>
       </article>
       <article class="dish">
-        <!-- ẢNH BÚN GIẢ CẦY: upload ảnh mới cùng tên bun-gia-cay.png để ghi đè, hoặc đổi tên/đuôi file ở dòng dưới -->
-        <img src="assets/images/bun-gia-cay.png" alt="Bún giả cầy">
+        <!-- ẢNH BÚN GIẢ CẦY: ảnh mới: assets/images/bun-gia-cay.jpg -->
+        <img src="assets/images/bun-gia-cay.jpg" alt="Bún giả cầy">
         <div class="dish-body">
           <h3>Bún giả cầy</h3>
           <p>Giả cầy đậm vị riềng mẻ, ăn kèm bún, phù hợp khách thích hương vị đậm và ấm.</p>
@@ -360,51 +365,36 @@
     <div class="eyebrow">Trải nghiệm thực khách</div>
     <h2 class="section-title">Điều khách nhớ sau một bữa ăn</h2>
     <div class="review-grid">
-
       <article class="review">
-        <img src="assets/images/fb-1.jpg" alt="Bàn ăn khách chụp tại quán">
-        <div class="review-body">
-          <div class="stars">★★★★★</div>
-          <p>“Nước chấm chua ngọt hài hòa, cá chiên giòn rụm bên trong vẫn ẩm mềm, đặc biệt chả cá rất dài và thơm. Nước dùng ngọt thanh, ăn với cá chiên không bị ngán.”</p>
-          <strong class="who">Hoài Phương N.</strong><small>Đánh giá trên Google Maps</small>
-        </div>
+        <img class="review-photo" src="assets/images/fb-1.jpg" alt="Món ăn tại Bún Cá Chấm 0?" loading="lazy" onerror="this.remove()">
+        <div class="review-head"><span class="avatar">H</span><div><strong class="who">Hoài Phương N.</strong><small>Google Maps</small></div></div>
+        <div class="stars">★★★★★</div>
+        <p>“Nước chấm chua ngọt hài hòa, cá chiên giòn rụm bên trong vẫn ẩm mềm, đặc biệt chả cá rất dài và thơm. Nước dùng ngọt thanh, ăn với cá chiên không bị ngán.”</p>
       </article>
-
-      <article class="review no-photo">
-        <div class="review-body">
-          <div class="stars">★★★★★</div>
-          <p>“Cá rán siêu giòn, thơm ngon mà không bị khét hay nồng mùi dầu tái sử dụng. Nước dùng ngọt thanh dễ ăn. Chấm 10/10.”</p>
-          <strong class="who">Thiên Quốc Đ.</strong><small>Đánh giá trên Google Maps</small>
-        </div>
-      </article>
-
       <article class="review">
-        <img src="assets/images/fb-3.jpg" alt="Món ăn khách chụp tại quán">
-        <div class="review-body">
-          <div class="stars">★★★★★</div>
-          <p>“Cá vỏ ngoài giòn bên trong mềm, nước chấm điều chỉnh được, quán sạch sẽ. Mình ăn no sạch luôn, sẽ quay lại.”</p>
-          <strong class="who">Nimie</strong><small>Local Guide · Google Maps</small>
-        </div>
+        <img class="review-photo" src="assets/images/fb-2.jpg" alt="Món ăn tại Bún Cá Chấm 0?" loading="lazy" onerror="this.remove()">
+        <div class="review-head"><span class="avatar">T</span><div><strong class="who">Thiên Quốc Đ.</strong><small>Google Maps</small></div></div>
+        <div class="stars">★★★★★</div>
+        <p>“Cá rán siêu giòn, thơm ngon mà không bị khét hay nồng mùi dầu tái sử dụng. Nước dùng ngọt thanh dễ ăn. Chấm 10/10.”</p>
       </article>
-
       <article class="review">
-        <img src="assets/images/fb-4.jpg" alt="Bàn ăn khách chụp tại quán">
-        <div class="review-body">
-          <div class="stars">★★★★★</div>
-          <p>“Để hình ảnh làm câu trả lời 😂”</p>
-          <strong class="who">OngTV</strong><small>Đánh giá trên Google Maps</small>
-        </div>
+        <img class="review-photo" src="assets/images/fb-3.jpg" alt="Món ăn tại Bún Cá Chấm 0?" loading="lazy" onerror="this.remove()">
+        <div class="review-head"><span class="avatar">N</span><div><strong class="who">Nimie</strong><small>Local Guide · Google Maps</small></div></div>
+        <div class="stars">★★★★★</div>
+        <p>“Cá vỏ ngoài giòn bên trong mềm, nước chấm điều chỉnh được, quán sạch sẽ. Mình ăn no sạch luôn, sẽ quay lại.”</p>
       </article>
-
       <article class="review">
-        <img src="assets/images/fb-5.jpg" alt="Cá chiên và nước dùng khách chụp">
-        <div class="review-body">
-          <div class="stars">★★★★★</div>
-          <p>“Rất ngon, nhân viên thân thiện và nhiệt tình.”</p>
-          <strong class="who">Qiong Y.</strong><small>Khách du lịch · Google Maps (dịch từ tiếng Trung)</small>
-        </div>
+        <img class="review-photo" src="assets/images/fb-4.jpg" alt="Món ăn tại Bún Cá Chấm 0?" loading="lazy" onerror="this.remove()">
+        <div class="review-head"><span class="avatar">O</span><div><strong class="who">OngTV</strong><small>Google Maps</small></div></div>
+        <div class="stars">★★★★★</div>
+        <p>“Để hình ảnh làm câu trả lời 😂”</p>
       </article>
-
+      <article class="review">
+        <img class="review-photo" src="assets/images/fb-5.jpg" alt="Món ăn tại Bún Cá Chấm 0?" loading="lazy" onerror="this.remove()">
+        <div class="review-head"><span class="avatar">Q</span><div><strong class="who">Qiong Y.</strong><small>Khách du lịch · Google Maps (dịch từ tiếng Trung)</small></div></div>
+        <div class="stars">★★★★★</div>
+        <p>“Rất ngon, nhân viên thân thiện và nhiệt tình.”</p>
+      </article>
     </div>
   </div>
 </section>
@@ -440,6 +430,9 @@
     <div class="copyright">© 2026 Bún Cá Chấm 0? • Thiết kế theo phong cách đỏ đô – kem – xanh rêu.</div>
   </div>
 </footer>
+
+<!-- Xem toàn bộ ảnh feedback -->
+<div class="lightbox" id="lightbox"><span class="lightbox-x">×</span><img id="lightboxImg" alt=""></div>
 
 <!-- Floating sidebar -->
 <div class="floating" aria-label="Liên hệ nhanh">
@@ -496,6 +489,21 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
     });
+  })();
+
+  (function () {
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    document.querySelectorAll('.review-photo').forEach(function (img) {
+      img.addEventListener('click', function () {
+        lbImg.src = img.src;
+        lb.classList.add('show');
+        document.body.classList.add('modal-open');
+      });
+    });
+    function closeLb() { lb.classList.remove('show'); document.body.classList.remove('modal-open'); }
+    lb.addEventListener('click', closeLb);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
   })();
 </script>
 
