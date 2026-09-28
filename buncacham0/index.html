@@ -75,10 +75,12 @@
 
     .why{background:#fff}
     .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
-    .why-card{padding:26px;border:1px solid var(--line);border-radius:18px;background:#fff;min-height:210px}
+    .why-card{border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
+    .why-card img{height:170px;object-fit:cover}
+    .why-body{padding:22px 24px 26px}
     .num{font-family:var(--serif);font-size:1.8rem;color:var(--gold)}
-    .why-card h3{font-family:var(--serif);font-size:1.25rem;margin:14px 0 10px}
-    .why-card p{color:var(--muted);font-size:.9rem;line-height:1.7}
+    .why-card h3{font-family:var(--serif);font-size:1.25rem;margin:10px 0 10px}
+    .why-card p{color:var(--muted);font-size:.9rem;line-height:1.7;margin:0}
 
     .menu-section{background:var(--cream)}
     .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
@@ -103,10 +105,15 @@
     .feature{padding:17px;border-radius:14px;background:#fcf8f1;border:1px solid var(--line);font-size:.9rem}
 
     .reviews{background:#fffaf2}
-    .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
-    .review{background:#fff;border:1px solid var(--line);padding:24px;border-radius:18px}
+    .review-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:34px}
+    .review{flex:0 0 calc(33.333% - 12px);background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+    .review img{height:210px;object-fit:cover}
+    .review-body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1}
     .stars{color:var(--gold);letter-spacing:.08em}
-    .review p{line-height:1.75;color:#62564f;font-size:.92rem}
+    .review p{line-height:1.75;color:#62564f;font-size:.92rem;flex:1}
+    .review.no-photo p{font-size:1.02rem;line-height:1.85}
+    .review .who{display:block}
+    .review small{display:block;color:var(--muted);margin-top:3px;font-size:.78rem}
 
     .visit{background:#fff}
     .visit-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px}
@@ -177,7 +184,8 @@
       .links{display:none}
       .hero-grid,.fullmenu,.space-grid,.visit-grid{grid-template-columns:1fr}
       .why-grid{grid-template-columns:1fr 1fr}
-      .menu-grid,.review-grid{grid-template-columns:1fr}
+      .menu-grid{grid-template-columns:1fr}
+      .review{flex-basis:calc(50% - 9px)}
       .hero-photo{max-width:650px}
       .hero-photo img{aspect-ratio:16/12}
       .footer-grid{grid-template-columns:1fr}
@@ -195,6 +203,7 @@
       .hero-grid{gap:34px}
       .mini-stats{grid-template-columns:1fr}
       .why-grid{grid-template-columns:1fr}
+      .review{flex-basis:100%}
       .feature-list{grid-template-columns:1fr}
       .hero h1{font-size:3.5rem}
       .photo-tag{right:8px}
@@ -242,7 +251,8 @@
       </div>
     </div>
     <div class="hero-photo">
-      <img src="assets/images/bun-ca-cham.png" alt="Set bún cá chấm tại Bún Cá Chấm 0?">
+      <!-- ẢNH HERO MỚI: assets/images/hero.jpg -->
+      <img src="assets/images/hero.jpg" alt="Set bún cá chấm tại Bún Cá Chấm 0?">
       <div class="photo-tag">Cá giòn • rau tươi • chấm đậm vị</div>
       <div class="photo-note"><strong>257 Nguyễn Trãi</strong><br>Phường Cầu Ông Lãnh, TP.HCM</div>
     </div>
@@ -254,10 +264,22 @@
     <div class="eyebrow">Vì sao thực khách lại tìm quán?</div>
     <h2 class="section-title">Bốn điều làm nên một bữa “không điểm nào chê”</h2>
     <div class="why-grid">
-      <article class="why-card"><div class="num">01</div><h3>Cá tươi, chiên giòn rụm</h3><p>Cá được chiên vàng giòn, giữ độ ẩm bên trong, mang lại cảm giác giòn ngoài – mềm trong.</p></article>
-      <article class="why-card"><div class="num">02</div><h3>Nước chấm tròn vị</h3><p>Vị mặn, ngọt, chua và cay cân bằng, đủ đậm để ăn cùng cá nhưng không lấn át nguyên liệu.</p></article>
-      <article class="why-card"><div class="num">03</div><h3>Nước chan thanh, dễ ăn</h3><p>Dành cho khách thích một tô bún nóng hổi, thanh vị nhưng vẫn rõ hương cá và rau thơm.</p></article>
-      <article class="why-card"><div class="num">04</div><h3>Không gian ấm cúng</h3><p>Phong cách gần gũi, phù hợp đi ăn nhanh, đi nhóm hoặc một bữa cơm nhẹ nhàng giữa trung tâm.</p></article>
+      <article class="why-card">
+        <img src="assets/images/ca-chien.jpg" alt="Cá tươi chiên giòn rụm">
+        <div class="why-body"><div class="num">01</div><h3>Cá tươi, chiên giòn rụm</h3><p>Cá được chiên vàng giòn, giữ độ ẩm bên trong, mang lại cảm giác giòn ngoài – mềm trong.</p></div>
+      </article>
+      <article class="why-card">
+        <img src="assets/images/nuoc-cham.jpg" alt="Nước chấm tròn vị">
+        <div class="why-body"><div class="num">02</div><h3>Nước chấm tròn vị</h3><p>Vị mặn, ngọt, chua và cay cân bằng, đủ đậm để ăn cùng cá nhưng không lấn át nguyên liệu.</p></div>
+      </article>
+      <article class="why-card">
+        <img src="assets/images/bun-nuoc-chan.jpg" alt="Bún nước chan thanh, dễ ăn">
+        <div class="why-body"><div class="num">03</div><h3>Nước chan thanh, dễ ăn</h3><p>Dành cho khách thích một tô bún nóng hổi, thanh vị nhưng vẫn rõ hương cá và rau thơm.</p></div>
+      </article>
+      <article class="why-card">
+        <img src="assets/images/khong-gian.jpg" alt="Không gian quán ấm cúng">
+        <div class="why-body"><div class="num">04</div><h3>Không gian ấm cúng</h3><p>Phong cách gần gũi, phù hợp đi ăn nhanh, đi nhóm hoặc một bữa cơm nhẹ nhàng giữa trung tâm.</p></div>
+      </article>
     </div>
   </div>
 </section>
@@ -284,6 +306,7 @@
         </div>
       </article>
       <article class="dish">
+        <!-- ẢNH BÚN GIẢ CẦY: upload ảnh mới cùng tên bun-gia-cay.png để ghi đè, hoặc đổi tên/đuôi file ở dòng dưới -->
         <img src="assets/images/bun-gia-cay.png" alt="Bún giả cầy">
         <div class="dish-body">
           <h3>Bún giả cầy</h3>
@@ -337,9 +360,51 @@
     <div class="eyebrow">Trải nghiệm thực khách</div>
     <h2 class="section-title">Điều khách nhớ sau một bữa ăn</h2>
     <div class="review-grid">
-      <article class="review"><div class="stars">★★★★★</div><p>“Cá giòn, bún mềm, nước chấm đậm vị. Kiểu món dễ ăn và hợp để quay lại cùng bạn bè.”</p><strong>Khách tại quán</strong></article>
-      <article class="review"><div class="stars">★★★★★</div><p>“Nước dùng thanh, phần cá vẫn giữ độ giòn. Không gian sáng và khá dễ tìm ở khu trung tâm.”</p><strong>Khách tại quán</strong></article>
-      <article class="review"><div class="stars">★★★★★</div><p>“Menu rõ ràng, giá dễ chọn, món đặc trưng nhất vẫn là set bún cá chấm ăn cùng rau tươi.”</p><strong>Khách tại quán</strong></article>
+
+      <article class="review">
+        <img src="assets/images/fb-1.jpg" alt="Bàn ăn khách chụp tại quán">
+        <div class="review-body">
+          <div class="stars">★★★★★</div>
+          <p>“Nước chấm chua ngọt hài hòa, cá chiên giòn rụm bên trong vẫn ẩm mềm, đặc biệt chả cá rất dài và thơm. Nước dùng ngọt thanh, ăn với cá chiên không bị ngán.”</p>
+          <strong class="who">Hoài Phương N.</strong><small>Đánh giá trên Google Maps</small>
+        </div>
+      </article>
+
+      <article class="review no-photo">
+        <div class="review-body">
+          <div class="stars">★★★★★</div>
+          <p>“Cá rán siêu giòn, thơm ngon mà không bị khét hay nồng mùi dầu tái sử dụng. Nước dùng ngọt thanh dễ ăn. Chấm 10/10.”</p>
+          <strong class="who">Thiên Quốc Đ.</strong><small>Đánh giá trên Google Maps</small>
+        </div>
+      </article>
+
+      <article class="review">
+        <img src="assets/images/fb-3.jpg" alt="Món ăn khách chụp tại quán">
+        <div class="review-body">
+          <div class="stars">★★★★★</div>
+          <p>“Cá vỏ ngoài giòn bên trong mềm, nước chấm điều chỉnh được, quán sạch sẽ. Mình ăn no sạch luôn, sẽ quay lại.”</p>
+          <strong class="who">Nimie</strong><small>Local Guide · Google Maps</small>
+        </div>
+      </article>
+
+      <article class="review">
+        <img src="assets/images/fb-4.jpg" alt="Bàn ăn khách chụp tại quán">
+        <div class="review-body">
+          <div class="stars">★★★★★</div>
+          <p>“Để hình ảnh làm câu trả lời 😂”</p>
+          <strong class="who">OngTV</strong><small>Đánh giá trên Google Maps</small>
+        </div>
+      </article>
+
+      <article class="review">
+        <img src="assets/images/fb-5.jpg" alt="Cá chiên và nước dùng khách chụp">
+        <div class="review-body">
+          <div class="stars">★★★★★</div>
+          <p>“Rất ngon, nhân viên thân thiện và nhiệt tình.”</p>
+          <strong class="who">Qiong Y.</strong><small>Khách du lịch · Google Maps (dịch từ tiếng Trung)</small>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
