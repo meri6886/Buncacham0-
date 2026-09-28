@@ -98,6 +98,15 @@
     .tick{display:flex;gap:10px;align-items:flex-start;color:#5e514a}
     .tick i{width:24px;height:24px;border-radius:50%;background:#f3e6c2;display:grid;place-items:center;color:#765109;font-style:normal;font-weight:700;flex:none}
 
+    .drinks{background:var(--cream)}
+    .drink-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:34px}
+    .drink-card{flex:0 0 calc(25% - 14px);margin:0;background:#fff;border:1px solid #eadbc7;border-radius:20px;overflow:hidden;box-shadow:0 10px 28px rgba(82,55,41,.08)}
+    .drink-photo{aspect-ratio:1/1;object-fit:cover;cursor:zoom-in;transition:transform .3s}
+    .drink-card:hover .drink-photo{transform:scale(1.04)}
+    .drink-card figcaption{padding:16px 18px 20px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 10px;position:relative;background:#fff}
+    .drink-card b{font-family:var(--serif);font-size:1.15rem}
+    .drink-card span{color:var(--burgundy);font-weight:700;font-size:.95rem}
+
     .space{background:#fff}
     .space-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
     .space-photo img{border-radius:22px;box-shadow:var(--shadow);height:320px;object-fit:cover}
@@ -191,6 +200,7 @@
       .why-grid{grid-template-columns:1fr 1fr}
       .menu-grid{grid-template-columns:1fr}
       .review{flex-basis:calc(50% - 9px)}
+      .drink-card{flex-basis:calc(50% - 9px)}
       .hero-photo{max-width:650px}
       .hero-photo img{aspect-ratio:16/12}
       .footer-grid{grid-template-columns:1fr}
@@ -337,6 +347,32 @@
       <a class="btn primary" href="https://app.grab.com/s/5lB9gv3L" target="_blank">Xem & đặt món trên Grab</a>
     </div>
     <img src="assets/images/menu.png" alt="Thực đơn Bún Cá Chấm 0?">
+  </div>
+</section>
+
+<section id="drinks" class="section drinks">
+  <div class="shell">
+    <div class="eyebrow">Đồ uống</div>
+    <h2 class="section-title">Giải nhiệt cho bữa ăn thêm trọn vẹn</h2>
+    <p class="lead">Bốn thức uống thanh mát để dùng kèm bún cá.</p>
+    <div class="drink-grid">
+      <figure class="drink-card">
+        <img class="drink-photo" src="assets/images/drink-1.jpg" alt="Nước sấu tại Bún Cá Chấm 0?" loading="lazy" onerror="this.closest('figure').remove()">
+        <figcaption><b>Nước sấu</b><span>25.000đ</span></figcaption>
+      </figure>
+      <figure class="drink-card">
+        <img class="drink-photo" src="assets/images/drink-2.jpg" alt="Trà atiso tại Bún Cá Chấm 0?" loading="lazy" onerror="this.closest('figure').remove()">
+        <figcaption><b>Trà atiso</b><span>25.000đ</span></figcaption>
+      </figure>
+      <figure class="drink-card">
+        <img class="drink-photo" src="assets/images/drink-3.jpg" alt="Trà dâu tằm tại Bún Cá Chấm 0?" loading="lazy" onerror="this.closest('figure').remove()">
+        <figcaption><b>Trà dâu tằm</b><span>25.000đ</span></figcaption>
+      </figure>
+      <figure class="drink-card">
+        <img class="drink-photo" src="assets/images/drink-4.jpg" alt="Trà tắc tại Bún Cá Chấm 0?" loading="lazy" onerror="this.closest('figure').remove()">
+        <figcaption><b>Trà tắc</b><span>25.000đ</span></figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -494,7 +530,7 @@
   (function () {
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lightboxImg');
-    document.querySelectorAll('.review-photo').forEach(function (img) {
+    document.querySelectorAll('.review-photo, .drink-photo').forEach(function (img) {
       img.addEventListener('click', function () {
         lbImg.src = img.src;
         lb.classList.add('show');
@@ -505,6 +541,12 @@
     lb.addEventListener('click', closeLb);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
   })();
+
+  // Ẩn mục Đồ uống nếu chưa có ảnh nào
+  window.addEventListener('load', function () {
+    var d = document.getElementById('drinks');
+    if (d && !d.querySelector('.drink-photo')) d.style.display = 'none';
+  });
 </script>
 
 </body>
